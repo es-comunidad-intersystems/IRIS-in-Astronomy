@@ -4,18 +4,28 @@ This repository contains the materials needed in order to reproduce this article
 
 These are the different steps needed:
 
-1. Register in ESA archives: URL
-2. Download data from URL, only those files with this kind of filename are needed: GaiaSource_1*_*.csv
-3. Concatenate the data using:
-for i in GaiaSource_1*_*.csv; do echo $i; cat $i >> GaiaSource_1.csv; rm $i; done
-4. Connect dbever to the instances
-5. Create the table in IRIS and postgres using this definition files:
-gaia_source.iris
-gaia_source.psql
-6. Create indexes
-7. Setup ingestion scripts, see 
-8. ingest-iris.sh
-9. ingest-postgres.sh
-10. and the corresponding configuration files: gaia.ctl and gaia
-11. Ingest data using the corresponding scripts
-12. Run queries
+1. Register in Gaia ESA [archive](https://gea.esac.esa.int/archive/).
+2. Download data in [CSV](http://cdn.gea.esac.esa.int/Gaia/gdr2/gaia_source/csv/). In the example below only those files whose filename matched this pattern: GaiaSource_1*.csv were used.
+3. Concatenate the CSV files using:
+
+ ```bash
+ for i in GaiaSource_1*.csv; do echo $i; cat  $i >> GaiaSource_1.csv; rm $i; done
+ ```
+
+4. Connect dbeaver to the instances. Dbeaver 21.0.1 was used. It contains appropiate jdbc drivers for PostGres and IRIS.
+6. Create the table in IRIS and postgres using this definition files:
+ sql/gaia_source.irissql
+ sql/gaia_source.psql
+6. Setup ingestion scripts:
+   * for IRIS:
+       1. Update jdbc_path in: **ingest/ingest-iris.sh** variable to point to iris-instance/dev/java/lib/JDK18 directory.
+       2. Update IRIS host/port and user/password in: **ingest/gaia.properties.iris**
+   
+   * Postgres use: 
+       1. Dowload pg_bulkload from https://ossc-db.github.io/pg_bulkload/pg_bulkload.html and install it pgbulk_load 
+       2. Update user and password in ingest/ingest-postgres.sh
+       3. Update table name in: gaia.properties.postgres
+7. Ingest data 
+    * IRIS: execute ingest/ingest-iris.sh
+    * Postgres: execute ingest/ingest-postgres.sh
+10. Run queries
