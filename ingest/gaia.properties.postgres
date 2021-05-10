@@ -1,0 +1,16 @@
+#
+# sample_csv.ctl -- Control file to load CSV input data
+#
+#    Copyright (c) 2007-2020, NIPPON TELEGRAPH AND TELEPHONE CORPORATION
+#
+SKIP=1        # do not read first line with headings
+OUTPUT = gdr2 # [<schema_name>.]table_name
+INPUT = ./GaiaSource_1.csv  # Input data location (absolute path)
+TYPE = CSV                            # Input file type
+QUOTE = "\""                          # Quoting character
+ESCAPE = \                            # Escape character for Quoting
+DELIMITER = ","                       # Delimiter
+WRITER=DIRECT
+MULTI_PROCESS = YES
+LOGFILE=./logs/pgbulk-log-parallel-4.txt
+VERBOSE=YES

@@ -1,0 +1,17 @@
+exclude=dummy
+refresh=5s
+log.file=logs/test-iris-10-200000-2.log
+jobs = 10
+source.type=csv
+source.url=file:/home/edu/Gaia/1/GaiaSource_1.csv
+source.header=#
+source.jobs = 10
+source.csv.pool = 200000
+target.host=localhost
+target.port=51773
+target.mode=xpe
+target.namespace=GAIA
+target.username=SuperUser
+target.password=SYS
+target.table=GDR2
+
