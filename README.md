@@ -4,7 +4,7 @@ This repository contains the materials needed in order to reproduce this article
 
 These are the different steps needed:
 
-1. Register in ESA archives: URL
+1. Register in Gaia ESA [archive](https://gea.esac.esa.int/archive/)
 2. Download data from URL, only those files with this kind of filename are needed: GaiaSource_1*_*.csv
 3. Concatenate the data using:
 for i in GaiaSource_1*_*.csv; do echo $i; cat $i >> GaiaSource_1.csv; rm $i; done
