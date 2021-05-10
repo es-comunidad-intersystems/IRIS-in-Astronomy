@@ -28,4 +28,6 @@ These are the different steps needed:
 7. Ingest data 
     * IRIS: execute ingest/ingest-iris.sh
     * Postgres: execute ingest/ingest-postgres.sh
-10. Run queries
+10. Run queries:
+    * IRIS: iris-queries.sql
+    * Postgres: postgres-queries.sql
