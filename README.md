@@ -17,11 +17,11 @@ These are the different steps needed:
  sql/gaia_source.irissql
  sql/gaia_source.psql
 6. Setup ingestion scripts:
-   * for IRIS:
+   * IRIS:
        1. Update jdbc_path in: **ingest/ingest-iris.sh** variable to point to iris-instance/dev/java/lib/JDK18 directory.
        2. Update IRIS host/port and user/password in: **ingest/gaia.properties.iris**
    
-   * Postgres use: 
+   * Postgres: 
        1. Dowload pg_bulkload from https://ossc-db.github.io/pg_bulkload/pg_bulkload.html and install it pgbulk_load 
        2. Update user and password in ingest/ingest-postgres.sh
        3. Update table name in: gaia.properties.postgres
